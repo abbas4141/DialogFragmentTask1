@@ -28,7 +28,6 @@ public class LoginDialogFragment extends DialogFragment {
     private TextInputLayout passwordInputlayout;
     private CheckBox checkboxStay;
     SharedPreferences.Editor editor = MainActivity.sharedPreferences.edit();
-    private String state = "0";
     private String userName = "admin";
     private String userPass = "12345678";
 
@@ -38,7 +37,6 @@ public class LoginDialogFragment extends DialogFragment {
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.login_dialog_fragment, container, false);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         Objects.requireNonNull(getDialog()
@@ -50,26 +48,14 @@ public class LoginDialogFragment extends DialogFragment {
         editTextUserName = view.findViewById(R.id.editTextUserName);
         editTextUserPassword = view.findViewById(R.id.editTextUserPassword);
         passwordInputlayout = view.findViewById(R.id.passwordInputlayout);
-        checkboxStay.setOnClickListener(stay);
         editTextUserPassword.addTextChangedListener(passwordwatcher);
         btnLogIn.setOnClickListener(logInListener);
         btnExit.setOnClickListener(exit);
     }
-
     View.OnClickListener exit = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             System.exit(0);
-        }
-    };
-    View.OnClickListener stay = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (checkboxStay.isChecked()) {
-                state = "1";
-            } else {
-                state = "0";
-            }
         }
     };
 
@@ -89,19 +75,13 @@ public class LoginDialogFragment extends DialogFragment {
     View.OnClickListener logInListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (editTextUserName.getText().toString().equals("12345")) {
-                Toast.makeText(((MainActivity) getActivity()), userName, Toast.LENGTH_SHORT).show();
-            }
             if (editTextUserName.getText().toString().equals(userName) &&
                     editTextUserPassword.getText().toString().equals(userPass)) {
-                if (state.equals("1")) {
+                ((MainActivity) getActivity()).textUserName.setText(editTextUserName.getText().toString());
+                if (checkboxStay.isChecked()) {
                     saveData();
-                    ((MainActivity) getActivity()).textUserName
-                            .setText(((MainActivity) getActivity()).sharedPreferences
-                                    .getString("userName", "ON_DATA3"));
-                } else if (state.equals("0")) {
-                    ((MainActivity) getActivity()).textUserName
-                            .setText(editTextUserName.getText().toString());
+                } else {
+                //do no thing
                 }
                 dismiss();
             } else {

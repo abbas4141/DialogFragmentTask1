@@ -12,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     public TextView textUserName;
     public static SharedPreferences sharedPreferences;
+    private Boolean SignInStatus;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +23,18 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.mainToolbsr);
         setSupportActionBar(toolbar);
         textUserName = (TextView) findViewById(R.id.textUserName);
-        if (sharedPreferences.getString("stay", "ON_DATA1").equals("yes")) {
-            textUserName.setText(sharedPreferences.getString("userName", "ON_DATA3"));
+        SignInStatus = sharedPreferences.getString("stay", "ON_DATA1").equals("yes");
+        userName=sharedPreferences.getString("userName", "ON_DATA3");
+
+        if (SignInStatus) {
+            textUserName.setText(userName);
         } else {
-            LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
-            loginDialogFragment.show(getSupportFragmentManager(), null);
+            showLogInDialog();
         }
+    }
+
+    void showLogInDialog() {
+        LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
+        loginDialogFragment.show(getSupportFragmentManager(), null);
     }
 }
