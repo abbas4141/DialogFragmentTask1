@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dialog Fragment Task 1</string>
+    <string name="log_in">Log In</string>
+    <string name="user_name">User Name</string>
+    <string name="user_password">Password</string>
+    <string name="exit">Exit</string>
+    <string name="stay_signed_in">Stay Signed In</string>
+</resources>

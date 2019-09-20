@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="310dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layoutDirection="ltr"
+        android:background="@drawable/round_dialog"
+        android:minWidth="310dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/log_in"
+            android:textStyle="bold"
+            android:textColor="@color/colorbtn"
+            android:textSize="28sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_text"
+            android:hint="@string/user_name"
+            android:gravity="left"
+            android:textColorHint="@color/color_hint"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="left"
+                android:backgroundTint="@color/colorbtn" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_text"
+            android:hint="@string/user_password"
+            app:counterEnabled="true"
+            app:counterMaxLength="8"
+            android:gravity="left"
+            app:errorEnabled="true"
+            android:textColorHint="@color/color_hint"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUserPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="left"
+                android:backgroundTint="@color/colorbtn"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <Button
+                android:id="@+id/btnLogIn"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_btn"
+                android:text="@string/log_in"
+                android:textAllCaps="false"
+                android:textColor="@color/color_text" />
+
+            <Button
+                android:id="@+id/btnExit"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"
+                android:background="@drawable/round_btn"
+                android:text="@string/exit"
+                android:textAllCaps="false"
+                android:textColor="@color/color_text" />
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/checkboxStay"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorbtn"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content"
+            android:text="@string/stay_signed_in" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="109dp"
+        android:layout_height="109dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="50dp"
+        card_view:cardBackgroundColor="@android:color/transparent"
+        card_view:cardElevation="0dp">
+
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:background="@drawable/round_logo"
+            android:src="@drawable/ic_launcher_background"
+            tools:ignore="ContentDescription" />
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
